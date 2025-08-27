@@ -1,0 +1,56 @@
+[package]
+name = "pallet-posc"
+version = "0.1.0"
+authors = ["Throughput Network"]
+description = "PoSc consensus pallet for Throughput Network"
+edition = "2021"
+license = "Apache-2.0"
+homepage = "https://throughput.network"
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.6", default-features = false, features = ["derive"] }
+log = { version = "0.4", default-features = false }
+scale-info = { version = "2.10", default-features = false, features = ["derive"] }
+
+frame-benchmarking = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false, optional = true }
+frame-support = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+frame-system = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+pallet-authorship = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+pallet-session = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+pallet-timestamp = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-application-crypto = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-consensus-slots = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-io = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-runtime = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-staking = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-std = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+
+# Local dependencies
+sp-consensus-posc = { path = "../../primitives/posc", default-features = false }
+
+[dev-dependencies]
+pallet-balances = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-core = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+
+[features]
+default = ["std"]
+std = [
+    "codec/std",
+    "log/std",
+    "scale-info/std",
+    "frame-benchmarking?/std",
+    "frame-support/std",
+    "frame-system/std",
+    "pallet-authorship/std",
+    "pallet-session/std",
+    "pallet-timestamp/std",
+    "sp-application-crypto/std",
+    "sp-consensus-posc/std",
+    "sp-consensus-slots/std",
+    "sp-io/std",
+    "sp-runtime/std",
+    "sp-staking/std",
+    "sp-std/std",
+]
+runtime-benchmarks = ["frame-benchmarking/runtime-benchmarks"]
+try-runtime = ["frame-support/try-runtime"]

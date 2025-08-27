@@ -1,0 +1,36 @@
+[package]
+name = "sc-consensus-posc"
+version = "0.1.0"
+authors = ["Throughput Network"]
+description = "PoSc consensus engine for Substrate"
+edition = "2021"
+license = "Apache-2.0"
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.6" }
+futures = "0.3"
+log = "0.4"
+parking_lot = "0.12"
+thiserror = "1.0"
+
+sc-client-api = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sc-consensus = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sc-consensus-slots = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sc-telemetry = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-api = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-application-crypto = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-block-builder = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-blockchain = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-consensus = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-consensus-slots = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-core = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-inherents = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-keystore = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+sp-runtime = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+
+# Local dependencies
+sp-consensus-posc = { path = "../../primitives/posc" }
+
+[dev-dependencies]
+sp-tracing = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }
+substrate-test-runtime-client = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506" }

@@ -1,0 +1,16 @@
+[build]
+rustflags = ["-L", "/opt/homebrew/lib"]
+
+[target.aarch64-apple-darwin]
+linker = "/opt/homebrew/opt/llvm/bin/clang"
+ar = "/opt/homebrew/opt/llvm/bin/llvm-ar"
+rustflags = ["-L", "/opt/homebrew/lib"]
+
+[env]
+CC = "/opt/homebrew/opt/llvm/bin/clang"
+CXX = "/opt/homebrew/opt/llvm/bin/clang++"
+AR = "/opt/homebrew/opt/llvm/bin/llvm-ar"
+CXXFLAGS = "-stdlib=libc++ -I/opt/homebrew/opt/llvm/include/c++/v1"
+LDFLAGS = "-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/lib -lsecp256k1 -lgmp -Wl,-rpath,/opt/homebrew/opt/llvm/lib -Wl,-rpath,/opt/homebrew/lib"
+LIBRARY_PATH = "/opt/homebrew/lib"
+PKG_CONFIG_PATH = "/opt/homebrew/lib/pkgconfig"

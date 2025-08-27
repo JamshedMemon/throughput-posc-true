@@ -1,0 +1,39 @@
+[package]
+name = "sp-consensus-posc"
+version = "0.1.0"
+authors = ["Throughput Network"]
+description = "Primitives for PoSc consensus"
+edition = "2021"
+license = "Apache-2.0"
+homepage = "https://throughput.network"
+repository = "https://github.com/throughput-network/throughput"
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.6", default-features = false, features = ["derive"] }
+scale-info = { version = "2.10", default-features = false, features = ["derive"] }
+serde = { version = "1.0", default-features = false, features = ["derive"], optional = true }
+
+sp-api = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-application-crypto = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-consensus-slots = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-core = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-inherents = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-runtime = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-std = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false }
+sp-timestamp = { git = "https://github.com/paritytech/polkadot-sdk", branch = "stable2506", default-features = false, optional = true }
+
+[features]
+default = ["std"]
+std = [
+    "codec/std",
+    "scale-info/std",
+    "serde/std",
+    "sp-api/std",
+    "sp-application-crypto/std",
+    "sp-consensus-slots/std",
+    "sp-core/std",
+    "sp-inherents/std",
+    "sp-runtime/std",
+    "sp-std/std",
+    "sp-timestamp/std",
+]
