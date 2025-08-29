@@ -19,6 +19,17 @@ WORKDIR /throughput
 # Copy source code
 COPY . .
 
+# Remove any local cargo config that might have macOS-specific settings
+RUN rm -rf .cargo/config.toml .cargo/config
+
+# Set proper compiler for Linux container
+ENV CC=clang
+ENV CXX=clang++
+ENV AR=ar
+ENV RUSTFLAGS=""
+ENV LDFLAGS=""
+ENV CPPFLAGS=""
+
 # Build the node
 RUN cargo build --release --bin frontier-template-node
 

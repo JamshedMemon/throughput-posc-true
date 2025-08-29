@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  throughput-posc-node:
+    build:
+      context: .
+      dockerfile: Dockerfile.posc
+    image: throughput-posc:latest
+    container_name: throughput-posc-blockchain
+    ports:
+      - "30333:30333"  # P2P
+      - "9933:9933"    # HTTP RPC
+      - "9944:9944"    # WebSocket RPC  
+      - "9615:9615"    # Prometheus metrics
+    volumes:
+      - posc-data:/data
+    environment:
+      - RUST_LOG=info
+    command: >
+      --dev
+      --base-path /data
+      --rpc-external
+      --rpc-cors=all
+      --unsafe-rpc-external
+      --rpc-methods=unsafe
+      --prometheus-external
+    restart: unless-stopped
+    networks:
+      - throughput-network
+
+networks:
+  throughput-network:
+    driver: bridge
+
+volumes:
+  posc-data:
+    driver: local

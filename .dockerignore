@@ -1,0 +1,6 @@
+target/
+.cargo/config.toml
+.cargo/config
+.DS_Store
+*.swp
+*.swo
